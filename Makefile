@@ -1,6 +1,9 @@
 main: main.c culzss  gpu_compress deculzss  gpu_decompress decompression
-	gcc -g -L /usr/local/cuda/lib64/ -lcudart -lpthread -o main main.c culzss.o gpu_compress.o deculzss.o gpu_decompress.o decompression.o
-
+	# gcc -g -L /usr/local/cuda-8.0/lib64/ -lcudart -lpthread -o main main.c culzss.o gpu_compress.o deculzss.o gpu_decompress.o decompression.o
+	# gcc -g -L /usr/local/cuda-8.0/lib64/ -lcudart -lpthread -o main main.c culzss.o gpu_compress.o deculzss.o gpu_decompress.o decompression.o
+	# g++ -c main.c
+	# g++ -lcudart main.o culzss.o gpu_compress.o deculzss.o gpu_decompress.o decompression.o -o main
+	nvcc -g main.c culzss.o gpu_compress.o deculzss.o gpu_decompress.o decompression.o -o main
 decompression: 	decompression.c decompression.h
 	gcc -g  -c -lpthread -o decompression.o decompression.c
 	
